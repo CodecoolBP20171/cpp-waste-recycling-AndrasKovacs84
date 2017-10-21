@@ -13,7 +13,7 @@ void Dustbin::setColor(const std::string &color) {
 }
 
 void Dustbin::throwOutGarbage(std::unique_ptr<Garbage> houseWaste) {
-    if(currentWeight + houseWaste->getWeight() < MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
+    if(currentWeight + houseWaste->getWeight() <= MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
         std::cout << houseWaste->getWeight() << std::endl;
         currentWeight += houseWaste->getWeight();
         currentGarbageAmount += 1;
@@ -25,7 +25,7 @@ void Dustbin::throwOutGarbage(std::unique_ptr<Garbage> houseWaste) {
 
 void Dustbin::throwOutPaperGarbage(std::unique_ptr<PaperGarbage> paperGarbage) {
     if(paperGarbage->getIsSqueezed()) {
-        if(currentWeight + paperGarbage->getWeight() < MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
+        if(currentWeight + paperGarbage->getWeight() <= MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
             currentWeight += paperGarbage->getWeight();
             currentGarbageAmount += 1;
             paperContent.push_back(std::move(paperGarbage));
@@ -39,7 +39,7 @@ void Dustbin::throwOutPaperGarbage(std::unique_ptr<PaperGarbage> paperGarbage) {
 
 void Dustbin::throwOutPlasticGarbage(std::unique_ptr<PlasticGarbage> plasticGarbage) {
     if(plasticGarbage->getIsClean()) {
-        if(currentWeight + plasticGarbage->getWeight() < MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
+        if(currentWeight + plasticGarbage->getWeight() <= MAX_WEIGHT && currentGarbageAmount < MAX_GARBAGE_AMOUNT){
             currentWeight += plasticGarbage->getWeight();
             currentGarbageAmount += 1;
             plasticContent.push_back(std::move(plasticGarbage));
@@ -52,9 +52,9 @@ void Dustbin::throwOutPlasticGarbage(std::unique_ptr<PlasticGarbage> plasticGarb
 }
 
 void Dustbin::emptyContents() {
-    houseWasteContent.empty();
-    paperContent.empty();
-    plasticContent.empty();
+    houseWasteContent.clear();
+    paperContent.clear();
+    plasticContent.clear();
     currentGarbageAmount = 0;
     currentWeight = 0;
 }
@@ -73,4 +73,24 @@ void Dustbin::printStatus() {
         std::cout << plastic->getName() << " ";
     }
     std::cout << std::endl;
+}
+
+const std::vector<std::unique_ptr<PaperGarbage>> &Dustbin::getPaperContent() const {
+    return paperContent;
+}
+
+const std::vector<std::unique_ptr<PlasticGarbage>> &Dustbin::getPlasticContent() const {
+    return plasticContent;
+}
+
+const std::vector<std::unique_ptr<Garbage>> &Dustbin::getHouseWasteContent() const {
+    return houseWasteContent;
+}
+
+size_t Dustbin::getCurrentWeight() const {
+    return currentWeight;
+}
+
+size_t Dustbin::getCurrentGarbageAmount() const {
+    return currentGarbageAmount;
 }

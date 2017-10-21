@@ -22,12 +22,17 @@ public:
     void throwOutPlasticGarbage(std::unique_ptr<PlasticGarbage>);
     void emptyContents();
     void printStatus();
+    const std::vector<std::unique_ptr<PaperGarbage>> &getPaperContent() const;
+    const std::vector<std::unique_ptr<PlasticGarbage>> &getPlasticContent() const;
+    const std::vector<std::unique_ptr<Garbage>> &getHouseWasteContent() const;
+    size_t getCurrentWeight() const;
+    size_t getCurrentGarbageAmount() const;
 
 
 protected:
     //Constants
     const size_t MAX_WEIGHT = 50;
-    const size_t MAX_GARBAGE_AMOUNT = 5;
+    const size_t MAX_GARBAGE_AMOUNT = 3;
 
     std::string color;
 

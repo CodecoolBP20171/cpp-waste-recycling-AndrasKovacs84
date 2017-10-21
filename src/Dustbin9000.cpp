@@ -37,8 +37,16 @@ void Dustbin9000::throwOutBottleCap(std::unique_ptr<BottleCap> bottleCap) {
 }
 
 void Dustbin9000::emptyWithExtraContents() {
-    metalContent.empty();
-    bottleCapContent.empty();
+    metalContent.clear();
+    bottleCapContent.clear();
     emptyContents();
 
+}
+
+const std::vector<std::unique_ptr<MetalGarbage>> &Dustbin9000::getMetalContent() const {
+    return metalContent;
+}
+
+const std::vector<std::unique_ptr<BottleCap>> &Dustbin9000::getBottleCapContent() const {
+    return bottleCapContent;
 }

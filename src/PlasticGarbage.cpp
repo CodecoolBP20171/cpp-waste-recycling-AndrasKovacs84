@@ -4,7 +4,7 @@
 
 #include "../include/PlasticGarbage.h"
 
-PlasticGarbage::PlasticGarbage(const std::string &name, int weight, bool isClean) : Garbage(name, weight),
+PlasticGarbage::PlasticGarbage(const std::string &name, size_t weight, bool isClean) : Garbage(name, weight),
                                                                                     isClean(isClean) {}
 void PlasticGarbage::clean() {
     this->isClean = true;

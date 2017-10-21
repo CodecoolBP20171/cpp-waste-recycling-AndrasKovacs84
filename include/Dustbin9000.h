@@ -16,6 +16,8 @@ public:
     void throwOutMetalGarbage(std::unique_ptr<MetalGarbage>);
     void throwOutBottleCap(std::unique_ptr<BottleCap>);
     void emptyWithExtraContents();
+    const std::vector<std::unique_ptr<MetalGarbage>> &getMetalContent() const;
+    const std::vector<std::unique_ptr<BottleCap>> &getBottleCapContent() const;
 
 private:
     std::vector<std::unique_ptr<MetalGarbage>> metalContent;

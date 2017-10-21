@@ -10,7 +10,7 @@
 
 class PlasticGarbage : public Garbage {
 public:
-    PlasticGarbage(const std::string &name, int weight, bool isClean);
+    PlasticGarbage(const std::string &name, size_t weight, bool isClean);
 
     bool getIsClean() const;
     void clean();

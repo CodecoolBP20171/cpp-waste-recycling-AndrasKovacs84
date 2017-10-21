@@ -1,4 +1,6 @@
 #include <iostream>
+#include <gtest/gtest.h>
+//#include <Tests/Tests.hpp>
 #include "include/Garbage.h"
 #include "include/PaperGarbage.h"
 #include "include/PlasticGarbage.h"
@@ -6,7 +8,8 @@
 #include "include/Dustbin.h"
 #include "include/Dustbin9000.h"
 
-int main() {
+int main(int argc, char* argv[]) {
+    /*
     std::cout << "garbage:" << std::endl;
     std::unique_ptr<Garbage> g(new Garbage("some other garbage", 10));
     std::cout << g->getName() << std::endl;
@@ -44,6 +47,20 @@ int main() {
     d9k.printStatus();
     d9k.throwOutBottleCap(std::move(bc));
     d9k.printStatus();
+*/
+    //Dustbin dustbin = Dustbin("red");
+    //Dustbin9000 d9k = Dustbin9000("green");
+    //std::unique_ptr<Garbage> overweightGarbage = std::unique_ptr<Garbage>(new Garbage("overweight garbage", 500));
+    //std::unique_ptr<Garbage> tinyGarbage = std::unique_ptr<Garbage>(new Garbage("tiny garbage", 5));
+    //std::unique_ptr<Garbage> houseWaste = std::unique_ptr<Garbage>(new Garbage("house garbage", 10));
+    //std::unique_ptr<PaperGarbage> paperGarbage = std::unique_ptr<PaperGarbage>(new PaperGarbage("some paper", 10, false));
+    //std::unique_ptr<PlasticGarbage> plasticGarbage = std::unique_ptr<PlasticGarbage>(new PlasticGarbage("some plastic", 2, false));
+    //dustbin.throwOutGarbage(std::move(tinyGarbage));
+    //dustbin.throwOutPaperGarbage(std::move(paperGarbage));
+    //dustbin.throwOutPlasticGarbage(std::move(plasticGarbage));
+    //return 0;
 
-    return 0;
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+
 }
