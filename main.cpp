@@ -4,6 +4,7 @@
 #include "include/PlasticGarbage.h"
 #include "include/DustbinContentError.h"
 #include "include/Dustbin.h"
+#include "include/Dustbin9000.h"
 
 int main() {
     std::cout << "garbage:" << std::endl;
@@ -20,17 +21,29 @@ int main() {
     std::cout << pl->getName() << std::endl;
     pl->clean();
 
-    Dustbin dustbin("red");
+    std::cout << "metal: " << std::endl;
+    std::unique_ptr<MetalGarbage> m(new MetalGarbage("some metal garbage", 1));
+    std::cout << m->getName() << std::endl;
 
-    dustbin.printStatus();
-    dustbin.throwOutGarbage(std::move(g));
-    dustbin.printStatus();
-    dustbin.throwOutPaperGarbage(std::move(p));
-    dustbin.printStatus();
-    dustbin.throwOutPlasticGarbage(std::move(pl));
-    dustbin.printStatus();
-    dustbin.emptyContents();
-    dustbin.printStatus();
+    std::cout << "bottle cap: " << std::endl;
+    std::unique_ptr<BottleCap> bc(new BottleCap("some bottle cap", 1, "pink"));
+    std::cout << bc->getName() << std::endl;
+
+    Dustbin dustbin("red");
+    Dustbin9000 d9k("yellow");
+
+    d9k.printStatus();
+    d9k.throwOutGarbage(std::move(g));
+    d9k.printStatus();
+    d9k.throwOutPaperGarbage(std::move(p));
+    d9k.printStatus();
+    d9k.throwOutPlasticGarbage(std::move(pl));
+    d9k.printStatus();
+
+    d9k.throwOutMetalGarbage(std::move(m));
+    d9k.printStatus();
+    d9k.throwOutBottleCap(std::move(bc));
+    d9k.printStatus();
 
     return 0;
 }

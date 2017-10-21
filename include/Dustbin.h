@@ -24,7 +24,7 @@ public:
     void printStatus();
 
 
-private:
+protected:
     //Constants
     const size_t MAX_WEIGHT = 50;
     const size_t MAX_GARBAGE_AMOUNT = 5;
