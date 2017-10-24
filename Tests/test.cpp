@@ -121,11 +121,11 @@ TEST_F(ClassDeclaration, d9kEmptyWithExtraContentsTest) {
     d9k.throwOutGarbage(std::move(tinyGarbage));
     d9k.throwOutGarbage(std::move(houseWaste));
     d9k.throwOutPlasticGarbage(std::move(plasticGarbage));
-    d9k.emptyWithExtraContents(); //empty to avoid overflow
+    d9k.emptyContents(); //empty to avoid overflow
     d9k.throwOutPaperGarbage(std::move(paperGarbage));
     d9k.throwOutMetalGarbage(std::move(metalGarbage));
     d9k.throwOutBottleCap(std::move(pinkBottleCap));
-    d9k.emptyWithExtraContents();
+    d9k.emptyContents();
     ASSERT_EQ(dustbin.getCurrentGarbageAmount(), 0);
     ASSERT_EQ(dustbin.getCurrentWeight(), 0);
     ASSERT_TRUE(dustbin.getHouseWasteContent().empty());

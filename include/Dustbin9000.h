@@ -15,7 +15,7 @@ public:
     Dustbin9000(const std::string &color);
     void throwOutMetalGarbage(std::unique_ptr<MetalGarbage>);
     void throwOutBottleCap(std::unique_ptr<BottleCap>);
-    void emptyWithExtraContents();
+    virtual void emptyContents();
     const std::vector<std::unique_ptr<MetalGarbage>> &getMetalContent() const;
     const std::vector<std::unique_ptr<BottleCap>> &getBottleCapContent() const;
 

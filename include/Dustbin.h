@@ -20,7 +20,7 @@ public:
     void throwOutGarbage(std::unique_ptr<Garbage>);
     void throwOutPaperGarbage(std::unique_ptr<PaperGarbage>);
     void throwOutPlasticGarbage(std::unique_ptr<PlasticGarbage>);
-    void emptyContents();
+    virtual void emptyContents();
     void printStatus();
     const std::vector<std::unique_ptr<PaperGarbage>> &getPaperContent() const;
     const std::vector<std::unique_ptr<PlasticGarbage>> &getPlasticContent() const;
